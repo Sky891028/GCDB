@@ -13,6 +13,6 @@ Fast encryption string, the current support for MD5 (16, 32), Sha1, Base64
 DESC
 s.source_files  = 'GCDB/**/*.{h,m}'
 s.platform      = :ios, '7.0'
-s.framework 	= 'FMDB'
+s.dependency  	= 'FMDB'
 
 end
