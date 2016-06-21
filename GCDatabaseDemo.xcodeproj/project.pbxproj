@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3346E66B1D18D2BA002B5AA2 /* GCCreateDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3346E66A1D18D2BA002B5AA2 /* GCCreateDatabase.m */; };
+		3346E6711D1931D5002B5AA2 /* baseDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3346E66E1D1931D5002B5AA2 /* baseDatabase.m */; };
+		3346E6721D1931D5002B5AA2 /* GCDataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3346E6701D1931D5002B5AA2 /* GCDataBaseManager.m */; };
 		335440831D17993B00E51554 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 335440821D17993B00E51554 /* main.m */; };
 		335440861D17993B00E51554 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 335440851D17993B00E51554 /* AppDelegate.m */; };
 		335440891D17993B00E51554 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335440881D17993B00E51554 /* ViewController.m */; };
@@ -16,8 +18,6 @@
 		335440911D17993B00E51554 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3354408F1D17993B00E51554 /* LaunchScreen.storyboard */; };
 		3354409C1D17993B00E51554 /* GCDatabaseDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3354409B1D17993B00E51554 /* GCDatabaseDemoTests.m */; };
 		335440A71D17993B00E51554 /* GCDatabaseDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 335440A61D17993B00E51554 /* GCDatabaseDemoUITests.m */; };
-		33BDFF561D17ECF70000158D /* baseDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BDFF511D17ECF70000158D /* baseDatabase.m */; };
-		33BDFF581D17ECF70000158D /* GCDataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BDFF551D17ECF70000158D /* GCDataBaseManager.m */; };
 		6DDEF6A0787064186486AC1C /* libPods-GCDatabaseDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7313F5392A7014878706E353 /* libPods-GCDatabaseDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +41,10 @@
 /* Begin PBXFileReference section */
 		3346E6691D18D2BA002B5AA2 /* GCCreateDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCreateDatabase.h; sourceTree = "<group>"; };
 		3346E66A1D18D2BA002B5AA2 /* GCCreateDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCCreateDatabase.m; sourceTree = "<group>"; };
+		3346E66D1D1931D5002B5AA2 /* baseDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseDatabase.h; sourceTree = "<group>"; };
+		3346E66E1D1931D5002B5AA2 /* baseDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = baseDatabase.m; sourceTree = "<group>"; };
+		3346E66F1D1931D5002B5AA2 /* GCDataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDataBaseManager.h; sourceTree = "<group>"; };
+		3346E6701D1931D5002B5AA2 /* GCDataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDataBaseManager.m; sourceTree = "<group>"; };
 		3354407E1D17993B00E51554 /* GCDatabaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCDatabaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		335440821D17993B00E51554 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		335440841D17993B00E51554 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -57,10 +61,6 @@
 		335440A21D17993B00E51554 /* GCDatabaseDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCDatabaseDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		335440A61D17993B00E51554 /* GCDatabaseDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCDatabaseDemoUITests.m; sourceTree = "<group>"; };
 		335440A81D17993B00E51554 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33BDFF501D17ECF70000158D /* baseDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseDatabase.h; sourceTree = "<group>"; };
-		33BDFF511D17ECF70000158D /* baseDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = baseDatabase.m; sourceTree = "<group>"; };
-		33BDFF541D17ECF70000158D /* GCDataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDataBaseManager.h; sourceTree = "<group>"; };
-		33BDFF551D17ECF70000158D /* GCDataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDataBaseManager.m; sourceTree = "<group>"; };
 		7313F5392A7014878706E353 /* libPods-GCDatabaseDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GCDatabaseDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9968AACDA556A53475598D14 /* Pods-GCDatabaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GCDatabaseDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GCDatabaseDemo/Pods-GCDatabaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		A906C541D2E82D1E01F2717C /* Pods-GCDatabaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GCDatabaseDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-GCDatabaseDemo/Pods-GCDatabaseDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -92,6 +92,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3346E66C1D1931D5002B5AA2 /* GCDB */ = {
+			isa = PBXGroup;
+			children = (
+				3346E66D1D1931D5002B5AA2 /* baseDatabase.h */,
+				3346E66E1D1931D5002B5AA2 /* baseDatabase.m */,
+				3346E66F1D1931D5002B5AA2 /* GCDataBaseManager.h */,
+				3346E6701D1931D5002B5AA2 /* GCDataBaseManager.m */,
+			);
+			path = GCDB;
+			sourceTree = "<group>";
+		};
 		335440751D17993B00E51554 = {
 			isa = PBXGroup;
 			children = (
@@ -117,7 +128,7 @@
 		335440801D17993B00E51554 /* GCDatabaseDemo */ = {
 			isa = PBXGroup;
 			children = (
-				33BDFF4F1D17ECF70000158D /* GCDB */,
+				3346E66C1D1931D5002B5AA2 /* GCDB */,
 				335440841D17993B00E51554 /* AppDelegate.h */,
 				335440851D17993B00E51554 /* AppDelegate.m */,
 				335440871D17993B00E51554 /* ViewController.h */,
@@ -157,17 +168,6 @@
 				335440A81D17993B00E51554 /* Info.plist */,
 			);
 			path = GCDatabaseDemoUITests;
-			sourceTree = "<group>";
-		};
-		33BDFF4F1D17ECF70000158D /* GCDB */ = {
-			isa = PBXGroup;
-			children = (
-				33BDFF501D17ECF70000158D /* baseDatabase.h */,
-				33BDFF511D17ECF70000158D /* baseDatabase.m */,
-				33BDFF541D17ECF70000158D /* GCDataBaseManager.h */,
-				33BDFF551D17ECF70000158D /* GCDataBaseManager.m */,
-			);
-			path = GCDB;
 			sourceTree = "<group>";
 		};
 		56106214494ED3CFB8ADDDB0 /* Pods */ = {
@@ -369,10 +369,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				335440891D17993B00E51554 /* ViewController.m in Sources */,
-				33BDFF561D17ECF70000158D /* baseDatabase.m in Sources */,
 				3346E66B1D18D2BA002B5AA2 /* GCCreateDatabase.m in Sources */,
-				33BDFF581D17ECF70000158D /* GCDataBaseManager.m in Sources */,
+				3346E6721D1931D5002B5AA2 /* GCDataBaseManager.m in Sources */,
 				335440861D17993B00E51554 /* AppDelegate.m in Sources */,
+				3346E6711D1931D5002B5AA2 /* baseDatabase.m in Sources */,
 				335440831D17993B00E51554 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
