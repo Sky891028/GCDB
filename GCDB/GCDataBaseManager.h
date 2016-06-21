@@ -8,26 +8,23 @@
 
 #import <Foundation/Foundation.h>
 #import <FMDB/FMDB.h>
-//#import "FMDatabaseAdditions.h"
 
-/**
- * @brief 对数据链接进行管理，包括链接，关闭连接
- * 可以建立长连接 
- *
- */
+#define BLOCK_EXEC(block, ...) if (block) { block(__VA_ARGS__); };
+
+typedef void (^sucDic)(id sucDic);
+typedef void (^errorBlock)(id error);
 
 
 @interface GCDataBaseManager : NSObject
 
 // unique databaseQueue
 @property (nonatomic, strong)   FMDatabaseQueue* databaseQueue;
-
 /**
- *  初始化数据库传入名称
+ *  数据库名称 设置即连接
  */
 @property (nonatomic, strong)   NSString* dataBaseName;
 
-// 单例模式
+// 单例
 +(GCDataBaseManager *) defaultDBManager;
 
 // 关闭数据库

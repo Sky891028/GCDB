@@ -31,6 +31,11 @@
     [self initializeDBWithName:dataBaseName];
 }
 
+
+-(FMDatabaseQueue* )databaseQueue{
+    if (!_databaseQueue) NSLog(@"没有连接数据库，无法完成操作");
+    return _databaseQueue;
+}
 /**
  * @brief 初始化数据库操作
  * @param name 数据库名称
@@ -45,11 +50,10 @@
     self.databaseQueue      =       [[FMDatabaseQueue alloc] initWithPath:_dataBasePath];
     NSFileManager * fileManager = [NSFileManager defaultManager];
     BOOL exist = [fileManager fileExistsAtPath:_dataBasePath];
-    ////    [self connect];
     if (!exist) {
-        NSLog(@"数据库不存在,请执行创建");
+        NSLog(@"数据创建|连接失败");
     } else {
-        NSLog(@"数据库已存在");
+        NSLog(@"数据已连接");
     }
     
 }
@@ -59,7 +63,7 @@
     [_databaseQueue close];
     _databaseQueue = nil;
     _dataBaseName = nil;
-    NSLog(@"已关闭");
+    NSLog(@"数据库已断开连接");
 }
 
 

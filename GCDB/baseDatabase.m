@@ -20,14 +20,26 @@
 }
 
 
-- (void) executeUpdateSql:(NSString* )sql{
-        [[[GCDataBaseManager defaultDBManager] databaseQueue] inDatabase:^(FMDatabase *db) {
-            [db executeUpdate:sql];
-            if (db.hadError) {
-                NSLog(@"执行sql\n%@",sql);
-                NSLog(@"%@",db.lastErrorMessage);
-            }
-        }];
+- (void)executeInDatabase:(void (^)(FMDatabase* db))queue {
+    [[[GCDataBaseManager defaultDBManager] databaseQueue] inDatabase:queue];
+}
+
+
+- (BOOL) executeUpdateSql:(NSString* )sql{
+
+    __block BOOL succeed = YES;
+    
+    [self executeInDatabase:^(FMDatabase *db) {
+        [db executeUpdate:sql];
+        if (db.hadError) {
+            succeed = NO;
+            NSLog(@"执行sql\n%@",sql);
+            NSLog(@"%@",db.lastErrorMessage);
+        }
+
+    }];
+    
+    return succeed;
 }
 
 -(void)executeSqlInBackground:(NSString* )Sql{
@@ -35,21 +47,34 @@
         [self executeUpdateSql:Sql];
     }];
 }
-//- (FMResultSet* ) exectuSql:(NSString* )sql ohter:(NSString* )other,...NS_REQUIRES_NIL_TERMINATION{
-//    [self exectuSql:"@1" ohter:@"111",@"das",@"ffsaf", nil];
-//    [[[GCDataBaseManager defaultDBManager] databaseQueue] inDatabase:^(FMDatabase *db) {
-//        FMResultSet* aaa = [db executeQuery:@"select * from chatData where sss = ?, ss = ? ;......." withArgumentsInArray:@[@"aa",@"dd"]];
-//        NSMutableArray* dd = [NSMutableArray new];
-//    va_list args;
-//    va_start(args, other);
-//    for(id str = other; str != nil; str = va_arg(args, id)){
-//        [dd addObject:other];
-//    }
-//        [db executeQuery:sql withArgumentsInArray:dd];
-//    va_end(args);
-//    }];
-//    
-//}
+
+
+- (BOOL) checkIsExist:(NSString* )tableName columName:(NSString* )columName{
+    if (!tableName){
+        NSAssert(NO, @"%s tableName not be nil",__FUNCTION__); return NO;
+    }
+    __block BOOL exist = NO;
+    [self executeInDatabase:^(FMDatabase *db) {
+        FMResultSet *rs = [db executeQuery:@"select count(*) as 'count' from sqlite_master where type ='table' and name = ?", tableName];
+        if ([rs next]) exist = [rs intForColumn:@"count"];
+    
+        if (exist && columName) {
+            exist = NO;
+            [rs close];
+            rs = [db executeQuery:[NSString stringWithFormat:@"PRAGMA table_info(%@)",tableName]];
+            while ([rs next]) {
+                NSString * cName = [rs stringForColumn:@"name"];
+                if ([cName isEqualToString:columName]) {
+                    exist = YES;
+                    NSLog(@"表：%@ 存在字段：%@",tableName,columName);
+                    break;
+                }
+            }
+        }
+        [rs close];
+    }];
+    return exist;
+}
 
 
 @end
