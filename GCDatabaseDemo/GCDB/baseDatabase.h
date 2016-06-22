@@ -14,6 +14,9 @@
 @interface baseDatabase : NSObject
 
 
+
++(instancetype)sharedInstance;
+
 /**
  *  在后台线程执行
  *

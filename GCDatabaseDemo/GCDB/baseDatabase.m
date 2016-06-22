@@ -11,6 +11,15 @@
 @implementation baseDatabase
 
 
++(instancetype)sharedInstance{
+    static baseDatabase* baseDB = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        baseDB = [[baseDatabase alloc]init];
+    });
+    return baseDB;
+}
+
 - (void)exBackgroundQueue:(void (^)())queue{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), queue);
 }

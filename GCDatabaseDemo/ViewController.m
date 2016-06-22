@@ -33,7 +33,7 @@
     [cre createDatabaseWithName:cName];
     
     //检查表 列...
-    [cre checkIsExist:@"channelData" columName:@"mid"];
+    [[baseDatabase sharedInstance] checkIsExist:@"channelData" columName:@"mid"];
     
     //后台执行会有一定的不及时 不影响业务时使用此接口
     //    [cre executeSqlInBackground:[NSString stringWithFormat:@"insert into chatData (mid,uid,content) values ('%d','323','哈哈哈')",arc4random() % 10000]];
@@ -41,30 +41,26 @@
     int x = 100;
     while (x > 0) {
         x --;
-        NSLog(@"%@",[cre executeUpdateSql:[NSString stringWithFormat:@"insert into chatData (mid,uid,content) values ('%d','323','哈哈哈')",arc4random() % 10000]]?@"写入成功":@"写入失败");
+        NSLog(@"%@",[[baseDatabase sharedInstance] executeUpdateSql:[NSString stringWithFormat:@"insert into chatData (mid,uid,content) values ('%d','323','哈哈哈')",arc4random() % 10000]]?@"写入成功":@"写入失败");
     }
     
     //调用databasequeue执行xxxxx操作 sql随便玩 没有任何限制
-    [cre executeInDatabase:^(FMDatabase *db) {
-        int x = 0;
-        while (x < 1) {
-            x ++;
-            FMResultSet* rs = [db executeQuery:@"select mid,uid,content from chatData"];
-            while ([rs next]) {
-//                NSLog(@"%@",[rs resultDictionary]);   //不推荐调用
-                NSLog(@"mid = %@",[rs stringForColumn:@"mid"]);
-                NSLog(@"uid = %@",[rs stringForColumn:@"uid"]);
-                NSLog(@"content = %@",[rs stringForColumn:@"content"]);
-            }
-            [rs close];
+    [[baseDatabase sharedInstance] executeInDatabase:^(FMDatabase *db) {
+
+        FMResultSet* rs = [db executeQuery:@"select mid,uid,content from chatData"];
+        while ([rs next]) {
+            NSLog(@"%@",[rs resultDictionary]);   //不推荐调用
+            NSLog(@"mid = %@",[rs stringForColumn:@"mid"]);
+            NSLog(@"uid = %@",[rs stringForColumn:@"uid"]);
+            NSLog(@"content = %@",[rs stringForColumn:@"content"]);
         }
+        [rs close];
     }];
     
     [cre close];  //断开连接数据库
     
-    
     //查询数据库  无法连接 无法执行方法
-    [cre executeInDatabase:^(FMDatabase *db) {
+    [[baseDatabase sharedInstance] executeInDatabase:^(FMDatabase *db) {
         FMResultSet* rs = [db executeQuery:@"select mid,uid,content from chatData limit 30"];
         while ([rs next]) {
             NSLog(@"%@",[rs resultDictionary]);
