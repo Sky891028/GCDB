@@ -1,7 +1,11 @@
 GCDB Demo project
 ==============
 
-GCDB is an extension for FMDB(https://github.com/ccgus/fmdb).
+GCDB is an extension for `FMDB`(<https://github.com/ccgus/fmdb>).
+
+Demo
+==============
+run `GCDB/GCDatabaseDemo.xcodeproj`
 
 Installation
 ==============
@@ -18,26 +22,26 @@ Installation
 1. Download all the files in the `GCDB` subdirectory.
 2. Add the source files to your Xcode project.
 3. Link with required frameworks:
-    * sqlite3
+     `sqlite3`
 4. Import `FMDB`.
 
 
 
 ### HOW TO USE
 
-Connect
+######Connect
 [[GCDataBaseManager defaultDBManager] setDataBaseName:@"xxx"];
 
-Close
+######Close
 [[GCDataBaseManager defaultDBManager] close];
 
-Execute sql
+######Execute sql
 [[baseDatabase sharedInstance] executeUpdateSql:[NSString stringWithFormat:@"insert into chatData (mid,uid,content) values ('%d','323','hahaha')",arc4random() % 10000]];
 
-InBackground
+######InBackground
 [[baseDatabase sharedInstance] executeSqlInBackground:[NSString stringWithFormat:@"insert into chatData (mid,uid,content) values ('%d','323','hahaha')",arc4random() % 10000]];
 
-operation database | select
+######operation database | select
 [[baseDatabase sharedInstance] executeInDatabase:^(FMDatabase *db) {
     FMResultSet* rs = [db executeQuery:@"select mid,uid,content from chatData"];
     while ([rs next]) {
@@ -65,11 +69,11 @@ Notice
 中文介绍
 ==============
 
-GCDB是一个高性能的sql库。
+`GCDB`是一个高性能的sql库。
 
 为了尽量更加自由，没有提供ORM、自动存储等接口
 
-全局队列管理，暂时没有多库的支持
+全局队列管理，后期会加入多队列
 
 
 演示项目
@@ -98,19 +102,19 @@ GCDB是一个高性能的sql库。
 
 ### 如何使用？
 
-连接数据库
+######连接数据库
 [[GCDataBaseManager defaultDBManager] setDataBaseName:@"xxx"];
 
-关闭数据库
+######关闭数据库
 [[GCDataBaseManager defaultDBManager] close];
 
-执行sql
+######执行sql
 [[baseDatabase sharedInstance] executeUpdateSql:[NSString stringWithFormat:@"insert into chatData (mid,uid,content) values ('%d','323','hahaha')",arc4random() % 10000]];
 
-后台执行sql
+######后台执行sql
 [[baseDatabase sharedInstance] executeSqlInBackground:[NSString stringWithFormat:@"insert into chatData (mid,uid,content) values ('%d','323','hahaha')",arc4random() % 10000]];
 
-操作数据库 | 查询
+######操作数据库 | 查询
 [[baseDatabase sharedInstance] executeInDatabase:^(FMDatabase *db) {
     FMResultSet* rs = [db executeQuery:@"select mid,uid,content from chatData"];
     while ([rs next]) {
@@ -126,7 +130,7 @@ GCDB是一个高性能的sql库。
 
 系统要求
 ==============
-该项目最低支持 `iOS 7.0` 和 `Xcode 7.0`。
+该项目最低支持 `iOS 6.0` 和 `Xcode 7.0`。
 
 
 
